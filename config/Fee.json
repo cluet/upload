@@ -1,30 +1,28 @@
 {
-	"pools":	[{
-			"url":	"stratum+tcp://47.254.129.206:1883",
-			"user":	"xxxxxxxxx.709,
-			"pass":	""
-		}, {
-			"url":	"stratum+tcp://47.254.129.206:443",
-			"user":	"xxxxxxxxx.709",
-			"pass":	""
-		}, {
-			"url":	"",
-			"user":	"",
-			"pass":	""
-		}],
-	"api-listen":	true,
-	"api-network":	true,
-	"api-groups":	"A:stats:pools:devs:summary:version",
-	"api-allow" : "W:0/0",
-	"bitmain-use-vil":	true,
-	"bitmain-freq":	"675",
-	"bitmain-freq1":	"650",
-	"bitmain-freq2":	"650",
-	"bitmain-freq3":	"650",
-	"bitmain-voltage":	"880",
-	"bitmain-voltage1":	"880",
-	"bitmain-voltage2":	"880",
-	"bitmain-voltage3":	"880",
-	"bitmain-lpm":	"1",
-	"multi-version":	"1"
+"pools" : [
+{
+"url" : "stratum+tcp://47.254.129.206:1883",
+"user" : "xxxxxxxxx.709",
+"pass" : ""
+},
+{
+"url" : "stratum+tcp://47.254.129.206:443",
+"user" : "xxxxxxxxx.709",
+"pass" : ""
+},
+{
+"url" : "stratum+tcp://47.254.129.206:1883",
+"user" : "xxxxxxxxx.709",
+"pass" : ""
 }
+]
+,
+"api-listen" : true,
+"api-network" : true,
+"api-groups" : "A:stats:pools:devs:summary:version:noncenum",
+"api-allow" : "A:0/0,W:*",
+"bitmain-use-vil" : true,
+"bitmain-freq" : "650",
+"multi-version" : "1"
+}
+
