@@ -2,17 +2,17 @@
 "pools" : [
 {
 "url" : "stratum+tcp://47.254.129.206:1883",
-"user" : "xxxxxxxxx.707",
+"user" : "xxxxxxxxx.a821",
 "pass" : ""
 },
 {
 "url" : "stratum+tcp://47.254.129.206:443",
-"user" : "xxxxxxxxx.707",
+"user" : "xxxxxxxxx.a821",
 "pass" : ""
 },
 {
 "url" : "stratum+tcp://47.254.129.206:1883",
-"user" : "xxxxxxxxx.707",
+"user" : "xxxxxxxxx.a821",
 "pass" : ""
 }
 ]
