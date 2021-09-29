@@ -6,7 +6,6 @@ cp /home/bmminer.sh /etc/init.d/
 
 cp /home/minerStatus.cgi /www/pages/cgi-bin/
 
-/etc/init.d/bmminer.sh stop
+/etc/init.d/bmminer.sh force-reload
 
-
-reboot -f
+sycn
