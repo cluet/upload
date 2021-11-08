@@ -22,6 +22,25 @@ do_start() {
 		echo "$gateway is reachable" 	
 	fi                    
 	sleep 5s
+	if [ -z  "`lsmod | grep bitmain_axi`"  ]; then
+		echo "No bitmain_axi.ko"
+		#insmod /lib/modules/`uname -r`/kernel/drivers/bitmain/bitmain-axi.ko
+        	insmod /lib/modules/bitmain_axi.ko
+                memory_size=`awk '/MemTotal/{total=$2}END{print total}' /proc/meminfo`
+                echo memory_size = $memory_size
+                if [ $memory_size -gt 1000000 ]; then
+                    echo "fpga_mem_offset_addr=0x3F000000"
+		    insmod /lib/modules/fpga_mem_driver.ko fpga_mem_offset_addr=0x3F000000
+                elif [ $memory_size -lt 1000000 -a  $memory_size -gt 400000 ]; then
+                    echo "fpga_mem_offset_addr=0x1F000000"
+		    insmod /lib/modules/fpga_mem_driver.ko fpga_mem_offset_addr=0x1F000000
+                else
+                    echo "fpga_mem_offset_addr=0x0F000000"
+		    insmod /lib/modules/fpga_mem_driver.ko fpga_mem_offset_addr=0x0F000000
+                fi
+	else
+		echo "Have bitmain-axi"
+	fi
 	killall -9 bmminer || true
 	echo "0" > /tmp/stoptrigger
         /usr/bin/bmminer --fixed-freq --no-pre-heat --version-file /usr/bin/compile_time --api-listen --default-config /config/Fee.json &
