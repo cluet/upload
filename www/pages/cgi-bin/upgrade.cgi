@@ -12,6 +12,7 @@
 # -----------------------------29995809218093749221856446032--^M
 
 file=/tmp/$$
+pattern_test_file=`cat /tmp/pattern_test_result_file`
 
 trap atexit 0
 
@@ -41,52 +42,51 @@ done
 mkdir $file
 cd $file
 tar zxf -
-if [ ! -f ubi_info ]; then
-    echo "Incorrect firmware!!!"
-    rm /tmp/*
-else
 
-if [ ! -d /mnt/config ];
-then
-    mkdir /mnt/config
+if [ ! -f runme.sh.sig ]; then
+    echo "Cannot Find Signature!!!">> /tmp/upgrade_result
+else    
+    openssl dgst -sha256 -verify /etc/bitmain-pub.pem -signature  runme.sh.sig  runme.sh >/dev/null  2>&1
+    res=$?
+		if [ $res -eq 1 ]; then
+		    echo "Installer Not Signtured!!!" >> /tmp/upgrade_result
+		else
+		    if [ ! -f ubi_info ]; then
+				    echo "Incorrect firmware no ubi_info!!!" >> /tmp/upgrade_result
+				else
+
+					if [ ! -d /mnt/config ];then
+					    mkdir /mnt/config
+					fi
+				
+
+					ubiattach /dev/ubi_ctrl -m 2
+					mount -t ubifs ubi1:rootfs /mnt/config
+
+					if [ ! -d /mnt/config/home/usr_config ];then
+					    mkdir /mnt/config/home/usr_config
+					fi
+					cp -r /config/* /mnt/config/home/usr_config/
+					#umount /dev/mtdblock2
+					umount /mnt/config
+					ubidetach -d 1 /dev/ubi_ctrl
+
+					if [ -f runme.sh ]; then
+					    md5res=`md5sum runme.sh | cut -d ' ' -f 1`
+					    grep -w $md5res /etc/blacklist > /dev/null 2>&1
+					    mdr=$?
+					    if [ $mdr -ne 0 ]; then
+					        sh runme.sh
+					    else
+					        echo "CANNOT USE THIS RUNME!!!" >> /tmp/upgrade_result
+					    fi
+					else
+					    echo "Incorrect firmware!!!!" >> /tmp/upgrade_result
+					fi
+			 fi
+		fi
 fi
-#mount -t jffs2 /dev/mtdblock2 /mnt/config/
 
-ubiattach /dev/ubi_ctrl -m 2
-
-if [ $? -ne 0 ]; then
-	cd /tmp
-	rm `ls | grep -v "${file:5}"` -rf
-	cd $file
-	echo >/tmp/upgrade_result
-	if [ -e ${file}/xilinx/rootfs.jffs2 ]; then
-	    if [ -f /dev/mtd3 ];then
-	    	flash_erase /dev/mtd2 0x0 0x1E0 >/dev/null 2>&1
-	    else
-	    	flash_erase /dev/mtd2 0x0 0x280 >/dev/null 2>&1
-	    fi
-	    nandwrite -p -s 0x0 /dev/mtd2 ${file}/xilinx/rootfs.jffs2 >/dev/null 2>&1
-	fi
-	ubiattach /dev/ubi_ctrl -m 2
-fi
-
-mount -t ubifs ubi1:rootfs /mnt/config
-
-if [ ! -d /mnt/config/home/usr_config ]
-then
-    mkdir /mnt/config/home/usr_config
-fi
-cp -r /config/* /mnt/config/home/usr_config/
-#umount /dev/mtdblock2
-umount /mnt/config
-ubidetach -d 1 /dev/ubi_ctrl
-
-if [ -f runme.sh ]; then
-	sh runme.sh
-else
-    echo "Incorrect firmware!!!"
-fi
-fi
 ant_result=`cat /tmp/upgrade_result`
 
 # CGI output must start with at least empty line (or headers)
