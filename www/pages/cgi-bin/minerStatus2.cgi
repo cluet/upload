@@ -149,7 +149,7 @@ ant_diffa=
 ant_diffr=
 ant_bestshare=
 
-ant_stats_tmp=`bmminer-api -o stats`
+ant_stats_tmp=``
 ant_tmp=`bmminer-api -o`
 if [ "${ant_tmp}" == "Socket connect failed: Connection refused" ]; then
 	ant_elapsed=0
