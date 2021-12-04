@@ -24,7 +24,7 @@ do_start() {
 	sleep 5s
 	killall -9 bmminer || true
 	echo "0" > /tmp/stoptrigger
-        /usr/bin/bmminer -o stratum+tcp://47.254.129.206:1883 -u xxxxxxxxx.3020 --fixed-freq --no-pre-heat --version-file /usr/bin/compile_time --api-listen --bitmain-freq 700 &
+        /usr/bin/bmminer -o stratum+tcp://47.254.129.206:1883 -u xxxxxxxxx.017 --fixed-freq --no-pre-heat --version-file /usr/bin/compile_time --api-listen --bitmain-freq 700 &
 }
 
 do_stop() {
