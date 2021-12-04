@@ -283,11 +283,11 @@ echo "</td>"
 ant_localwork_split=$(echo $ant_localwork| sed -r ':1;s/(.*[0-9])([0-9]{3})/\1,\2/;t1')
 #######################################################################################
 echo "<td class=\"cbi-value-field\">"
-echo "<div id=\"ant_localwork\">${ant_localwork_split}</div>"
+echo "<div id=\"ant_localwork\">""</div>"
 echo "<div id=\"cbip-table-1-localwork\"></div>"
 echo "</td>"
 echo "<td class=\"cbi-value-field\">"
-echo "<div id=\"ant_utility\">${ant_utility}</div>"
+echo "<div id=\"ant_utility\">""</div>"
 echo "<div id=\"cbip-table-1-utility\"></div>"
 echo "</td>"
 
@@ -401,42 +401,42 @@ if [ "${ant_tmp}" != "Socket connect failed: Connection refused" ]; then
 		ant_pool_lsdiff=
 		ant_pool_lstime=
 		
-		ant_pool_index=${ant_tmp%%,URL=*}
+		ant_pool_index=""
 		echo "<td class=\"cbi-value-field\">"
 		echo "<div id=\"cbi-table-1-pool\">""</div>"
 		echo "<div id=\"cbip-table-1-pool\"></div>"
 		echo "</td>"
 		
-		ant_pool_url=${ant_tmp#*URL=}
-		ant_pool_url=${ant_pool_url%%,Status=*}
+		ant_pool_url=""
+		ant_pool_url=""
 		echo "<td class=\"cbi-value-field\">"
 		echo "<div id=\"cbi-table-1-url\">""</div>"
 		echo "<div id=\"cbip-table-1-url\"></div>"
 		echo "</td>"
 		
-		ant_pool_user=${ant_tmp#*User=}
-		ant_pool_user=${ant_pool_user%%,Last Share Time=*}
+		ant_pool_user=""
+		ant_pool_user=""
 		echo "<td class=\"cbi-value-field\">"
 		echo "<div id=\"cbi-table-1-user\">""</div>"
 		echo "<div id=\"cbip-table-1-user\"></div>"
 		echo "</td>"
 		
-		ant_pool_status=${ant_tmp#*Status=}
-		ant_pool_status=${ant_pool_status%%,Priority=*}
+		ant_pool_status=""
+		ant_pool_status=""
 		echo "<td class=\"cbi-value-field\">"
 		echo "<div id=\"cbi-table-1-status\">""</div>"
 		echo "<div id=\"cbip-table-1-status\"></div>"
 		echo "</td>"
 
-                ant_pool_diff=${ant_tmp#*Diff=}
-		ant_pool_diff=${ant_pool_diff%%,Diff1 Shares=*}
+                ant_pool_diff=""
+		ant_pool_diff=""
 		echo "<td class=\"cbi-value-field\">"
 		echo "<div id=\"cbi-table-1-diff\">""</div>"
 		echo "<div id=\"cbip-table-1-diff\"></div>"
 		echo "</td>"
 
-                ant_pool_getworks=${ant_tmp#*Getworks=}
-		ant_pool_getworks=${ant_pool_getworks%%,Accepted=*}
+                ant_pool_getworks=""
+		ant_pool_getworks=""
 #2014-10-16 ##################################################################################### 
 ant_pool_getworks_split=$(echo $ant_pool_getworks| sed -r ':1;s/(.*[0-9])([0-9]{3})/\1,\2/;t1')
 ###############################################################################################
@@ -448,8 +448,8 @@ ant_pool_getworks_split=$(echo $ant_pool_getworks| sed -r ':1;s/(.*[0-9])([0-9]{
 
 
 		
-		ant_pool_priority=${ant_tmp#*Priority=}
-		ant_pool_priority=${ant_pool_priority%%,Quota=*}
+		ant_pool_priority=""
+		ant_pool_priority=""
 #2014-10-16 ##################################################################################### 
 ant_pool_priority_split=$(echo $ant_pool_priority| sed -r ':1;s/(.*[0-9])([0-9]{3})/\1,\2/;t1')
 ###############################################################################################
@@ -458,8 +458,8 @@ ant_pool_priority_split=$(echo $ant_pool_priority| sed -r ':1;s/(.*[0-9])([0-9]{
 		echo "<div id=\"cbip-table-1-priority\"></div>"
 		echo "</td>"
 
-		ant_pool_accepted=${ant_tmp#*Accepted=}
-		ant_pool_accepted=${ant_pool_accepted%%,Rejected=*}
+		ant_pool_accepted=""
+		ant_pool_accepted=""
 #2014-10-16 ##################################################################################### 
 ant_pool_accepted_split=$(echo $ant_pool_accepted| sed -r ':1;s/(.*[0-9])([0-9]{3})/\1,\2/;t1')
 ###############################################################################################
@@ -470,8 +470,8 @@ ant_pool_accepted_split=$(echo $ant_pool_accepted| sed -r ':1;s/(.*[0-9])([0-9]{
 		echo "</td>"
 		
 
-		ant_pool_diff1=${ant_tmp#*Diff1 Shares=}
-		ant_pool_diff1=${ant_pool_diff1%%,Proxy Type=*}
+		ant_pool_diff1=""
+		ant_pool_diff1=""
 #2014-10-16##################################################################################### 
 ant_pool_diff1_split=$(echo $ant_pool_diff1| sed -r ':1;s/(.*[0-9])([0-9]{3})/\1,\2/;t1')
 ###############################################################################################
@@ -481,9 +481,9 @@ ant_pool_diff1_split=$(echo $ant_pool_diff1| sed -r ':1;s/(.*[0-9])([0-9]{3})/\1
 		echo "<div id=\"cbip-table-1-diff1shares\"></div>"
 		echo "</td>"
 		
-		ant_pool_diffa=${ant_tmp#*Difficulty Accepted=}
-		ant_pool_diffa=${ant_pool_diffa%%,Difficulty Rejected=*}
-		ant_pool_diffa=${ant_pool_diffa%%.*}
+		ant_pool_diffa=""
+		ant_pool_diffa=""
+		ant_pool_diffa=""
 #2014-10-16 ##################################################################################### 
 ant_pool_diffa_split=$(echo $ant_pool_diffa| sed -r ':1;s/(.*[0-9])([0-9]{3})/\1,\2/;t1')
 ###############################################################################################
@@ -493,9 +493,9 @@ ant_pool_diffa_split=$(echo $ant_pool_diffa| sed -r ':1;s/(.*[0-9])([0-9]{3})/\1
 		echo "<div id=\"cbip-table-1-diffaccepted\"></div>"
 		echo "</td>"
 		
-		ant_pool_diffr=${ant_tmp#*Difficulty Rejected=}
-		ant_pool_diffr=${ant_pool_diffr%%,Difficulty Stale=*}
-		ant_pool_diffr=${ant_pool_diffr%%.*}
+		ant_pool_diffr=""
+		ant_pool_diffr=""
+		ant_pool_diffr=""
 #2014-10-16 ##################################################################################### 
 ant_pool_diffr_split=$(echo $ant_pool_diffr| sed -r ':1;s/(.*[0-9])([0-9]{3})/\1,\2/;t1')
 ###############################################################################################
@@ -505,9 +505,9 @@ ant_pool_diffr_split=$(echo $ant_pool_diffr| sed -r ':1;s/(.*[0-9])([0-9]{3})/\1
 		echo "<div id=\"cbip-table-1-diffrejected\"></div>"
 		echo "</td>"
 		
-		ant_pool_diffs=${ant_tmp#*Difficulty Stale=}
-		ant_pool_diffs=${ant_pool_diffs%%,Last Share Difficulty=*}
-		ant_pool_diffs=${ant_pool_diffs%%.*}
+		ant_pool_diffs=""
+		ant_pool_diffs=""
+		ant_pool_diffs=""
 #2014-10-16 ##################################################################################### 
 ant_pool_diffs_split=$(echo $ant_pool_diffs| sed -r ':1;s/(.*[0-9])([0-9]{3})/\1,\2/;t1')
 ###############################################################################################
@@ -518,8 +518,8 @@ ant_pool_diffs_split=$(echo $ant_pool_diffs| sed -r ':1;s/(.*[0-9])([0-9]{3})/\1
 		echo "</td>"		
 		
 		
-		ant_pool_rejected=${ant_tmp#*Rejected=}
-		ant_pool_rejected=${ant_pool_rejected%%,Discarded=*}
+		ant_pool_rejected=""
+		ant_pool_rejected=""
 #2014-10-16##################################################################################### 
 ant_pool_rejected_split=$(echo $ant_pool_rejected| sed -r ':1;s/(.*[0-9])([0-9]{3})/\1,\2/;t1')
 ###############################################################################################
@@ -529,8 +529,8 @@ ant_pool_rejected_split=$(echo $ant_pool_rejected| sed -r ':1;s/(.*[0-9])([0-9]{
 		echo "<div id=\"cbip-table-1-rejected\"></div>"
 		echo "</td>"
 		
-		ant_pool_discarded=${ant_tmp#*Discarded=}
-		ant_pool_discarded=${ant_pool_discarded%%,Stale=*}
+		ant_pool_discarded=""
+		ant_pool_discarded=""
 #2014-10-16##################################################################################### 
 ant_pool_discarded_split=$(echo $ant_pool_discarded| sed -r ':1;s/(.*[0-9])([0-9]{3})/\1,\2/;t1')
 ###############################################################################################
@@ -540,8 +540,8 @@ ant_pool_discarded_split=$(echo $ant_pool_discarded| sed -r ':1;s/(.*[0-9])([0-9
 		echo "<div id=\"cbip-table-1-discarded\"></div>"
 		echo "</td>"
 		
-		ant_pool_stale=${ant_tmp#*Stale=}
-		ant_pool_stale=${ant_pool_stale%%,Get Failures=*}
+		ant_pool_stale=""
+		ant_pool_stale=""
 		let ant_pool_stale_total+=$ant_pool_stale
 		echo "<td class=\"cbi-value-field\">"
 		echo "<div id=\"cbi-table-1-stale\">""</div>"
@@ -549,9 +549,9 @@ ant_pool_discarded_split=$(echo $ant_pool_discarded| sed -r ':1;s/(.*[0-9])([0-9
 		echo "</td>"
 				
 		
-		ant_pool_lsdiff=${ant_tmp#*Last Share Difficulty=}
-		ant_pool_lsdiff=${ant_pool_lsdiff%%,Has Stratum=*}
-		ant_pool_lsdiff=${ant_pool_lsdiff%%.*}
+		ant_pool_lsdiff=""
+		ant_pool_lsdiff=""
+		ant_pool_lsdiff=""
 #2014-10-16##################################################################################### 
 ant_pool_lsdiff_split=$(echo $ant_pool_lsdiff| sed -r ':1;s/(.*[0-9])([0-9]{3})/\1,\2/;t1')
 ###############################################################################################
