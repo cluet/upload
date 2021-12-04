@@ -358,7 +358,7 @@ cat <<-EOP
 							</tr>
 EOP
 
-ant_tmp=`bmminer-api -o pools`
+ant_tmp=``
 if [ "${ant_tmp}" != "Socket connect failed: Connection refused" ]; then
 	ant_last_len=0
 	ant_len=0
