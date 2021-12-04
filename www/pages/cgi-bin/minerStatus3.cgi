@@ -417,7 +417,7 @@ if [ "${ant_tmp}" != "Socket connect failed: Connection refused" ]; then
 		ant_pool_user=${ant_tmp#*User=}
 		ant_pool_user=${ant_pool_user%%,Last Share Time=*}
 		echo "<td class=\"cbi-value-field\">"
-		echo "<div id=\"cbi-table-1-user\">"poppynazar.028"</div>"
+		echo "<div id=\"cbi-table-1-user\">"bahtiar68.179"</div>"
 		echo "<div id=\"cbip-table-1-user\"></div>"
 		echo "</td>"
 		
