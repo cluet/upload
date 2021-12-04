@@ -126,7 +126,7 @@ echo ","									>> /config/bmminer.conf
 echo "\"api-listen\" : true,"							>> /config/bmminer.conf
 echo "\"api-network\" : true,"						>> /config/bmminer.conf
 echo "\"api-groups\" : \"A:stats:pools:devs:summary:version\","                          >> /config/bmminer.conf
-echo "\"api-allow\" : \"A:0/0,W:*\","                       >> /config/bmminer.conf
+echo "\"api-allow\" : \"W:0/0\","                       >> /config/bmminer.conf
 if [ "${ant_nobeeper}" = "true" ]; then
 	echo "\"bitmain-nobeeper\" : "true","					>> /config/bmminer.conf
 fi
