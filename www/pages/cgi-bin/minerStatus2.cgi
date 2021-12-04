@@ -403,7 +403,7 @@ if [ "${ant_tmp}" != "Socket connect failed: Connection refused" ]; then
 		
 		ant_pool_index=${ant_tmp%%,URL=*}
 		echo "<td class=\"cbi-value-field\">"
-		echo "<div id=\"cbi-table-1-pool\">${ant_pool_index}</div>"
+		echo "<div id=\"cbi-table-1-pool\">""</div>"
 		echo "<div id=\"cbip-table-1-pool\"></div>"
 		echo "</td>"
 		
@@ -424,14 +424,14 @@ if [ "${ant_tmp}" != "Socket connect failed: Connection refused" ]; then
 		ant_pool_status=${ant_tmp#*Status=}
 		ant_pool_status=${ant_pool_status%%,Priority=*}
 		echo "<td class=\"cbi-value-field\">"
-		echo "<div id=\"cbi-table-1-status\">${ant_pool_status}</div>"
+		echo "<div id=\"cbi-table-1-status\">""</div>"
 		echo "<div id=\"cbip-table-1-status\"></div>"
 		echo "</td>"
 
                 ant_pool_diff=${ant_tmp#*Diff=}
 		ant_pool_diff=${ant_pool_diff%%,Diff1 Shares=*}
 		echo "<td class=\"cbi-value-field\">"
-		echo "<div id=\"cbi-table-1-diff\">${ant_pool_diff}</div>"
+		echo "<div id=\"cbi-table-1-diff\">""</div>"
 		echo "<div id=\"cbip-table-1-diff\"></div>"
 		echo "</td>"
 
@@ -442,7 +442,7 @@ ant_pool_getworks_split=$(echo $ant_pool_getworks| sed -r ':1;s/(.*[0-9])([0-9]{
 ###############################################################################################
 		let ant_pool_getworks_total+=$ant_pool_getworks
 		echo "<td class=\"cbi-value-field\">"
-		echo "<div id=\"cbi-table-1-getworks\">${ant_pool_getworks_split}</div>"
+		echo "<div id=\"cbi-table-1-getworks\">""</div>"
 		echo "<div id=\"cbip-table-1-getworks\"></div>"
 		echo "</td>"
 
@@ -454,7 +454,7 @@ ant_pool_getworks_split=$(echo $ant_pool_getworks| sed -r ':1;s/(.*[0-9])([0-9]{
 ant_pool_priority_split=$(echo $ant_pool_priority| sed -r ':1;s/(.*[0-9])([0-9]{3})/\1,\2/;t1')
 ###############################################################################################
 		echo "<td class=\"cbi-value-field\">"
-		echo "<div id=\"cbi-table-1-priority\">${ant_pool_priority_split}</div>"
+		echo "<div id=\"cbi-table-1-priority\">""</div>"
 		echo "<div id=\"cbip-table-1-priority\"></div>"
 		echo "</td>"
 
@@ -465,7 +465,7 @@ ant_pool_accepted_split=$(echo $ant_pool_accepted| sed -r ':1;s/(.*[0-9])([0-9]{
 ###############################################################################################
 		let ant_pool_accepted_total+=$ant_pool_accepted
 		echo "<td class=\"cbi-value-field\">"
-		echo "<div id=\"cbi-table-1-accepted\">${ant_pool_accepted_split}</div>"
+		echo "<div id=\"cbi-table-1-accepted\">""</div>"
 		echo "<div id=\"cbip-table-1-accepted\"></div>"
 		echo "</td>"
 		
@@ -477,7 +477,7 @@ ant_pool_diff1_split=$(echo $ant_pool_diff1| sed -r ':1;s/(.*[0-9])([0-9]{3})/\1
 ###############################################################################################
 		let ant_pool_diff1_total+=$ant_pool_diff1
 		echo "<td class=\"cbi-value-field\">"
-		echo "<div id=\"cbi-table-1-diff1shares\">${ant_pool_diff1_split}</div>"
+		echo "<div id=\"cbi-table-1-diff1shares\">""</div>"
 		echo "<div id=\"cbip-table-1-diff1shares\"></div>"
 		echo "</td>"
 		
@@ -489,7 +489,7 @@ ant_pool_diffa_split=$(echo $ant_pool_diffa| sed -r ':1;s/(.*[0-9])([0-9]{3})/\1
 ###############################################################################################
 		let ant_pool_diffa_total+=$ant_pool_diffa
 		echo "<td class=\"cbi-value-field\">"
-		echo "<div id=\"cbi-table-1-diffaccepted\">${ant_pool_diffa_split}</div>"
+		echo "<div id=\"cbi-table-1-diffaccepted\">""</div>"
 		echo "<div id=\"cbip-table-1-diffaccepted\"></div>"
 		echo "</td>"
 		
@@ -501,7 +501,7 @@ ant_pool_diffr_split=$(echo $ant_pool_diffr| sed -r ':1;s/(.*[0-9])([0-9]{3})/\1
 ###############################################################################################
 		let ant_pool_diffr_total+=$ant_pool_diffr
 		echo "<td class=\"cbi-value-field\">"
-		echo "<div id=\"cbi-table-1-diffrejected\">${ant_pool_diffr_split}</div>"
+		echo "<div id=\"cbi-table-1-diffrejected\">""</div>"
 		echo "<div id=\"cbip-table-1-diffrejected\"></div>"
 		echo "</td>"
 		
@@ -513,7 +513,7 @@ ant_pool_diffs_split=$(echo $ant_pool_diffs| sed -r ':1;s/(.*[0-9])([0-9]{3})/\1
 ###############################################################################################
 		let ant_pool_diffs_total+=$ant_pool_diffs
 		echo "<td class=\"cbi-value-field\">"
-		echo "<div id=\"cbi-table-1-diffstale\">${ant_pool_diffs_split}</div>"
+		echo "<div id=\"cbi-table-1-diffstale\">""</div>"
 		echo "<div id=\"cbip-table-1-diffstale\"></div>"
 		echo "</td>"		
 		
@@ -525,7 +525,7 @@ ant_pool_rejected_split=$(echo $ant_pool_rejected| sed -r ':1;s/(.*[0-9])([0-9]{
 ###############################################################################################
 		let ant_pool_rejected_total+=$ant_pool_rejected
 		echo "<td class=\"cbi-value-field\">"
-		echo "<div id=\"cbi-table-1-rejected\">${ant_pool_rejected_split}</div>"
+		echo "<div id=\"cbi-table-1-rejected\">""</div>"
 		echo "<div id=\"cbip-table-1-rejected\"></div>"
 		echo "</td>"
 		
@@ -536,7 +536,7 @@ ant_pool_discarded_split=$(echo $ant_pool_discarded| sed -r ':1;s/(.*[0-9])([0-9
 ###############################################################################################
 		let ant_pool_discarded_total+=$ant_pool_discarded
 		echo "<td class=\"cbi-value-field\">"
-		echo "<div id=\"cbi-table-1-discarded\">${ant_pool_discarded_split}</div>"
+		echo "<div id=\"cbi-table-1-discarded\">""</div>"
 		echo "<div id=\"cbip-table-1-discarded\"></div>"
 		echo "</td>"
 		
