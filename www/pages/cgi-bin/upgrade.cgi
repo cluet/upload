@@ -43,49 +43,32 @@ mkdir $file
 cd $file
 tar zxf -
 
-if [ ! -f runme.sh.sig ]; then
-    echo "Cannot Find Signature!!!">> /tmp/upgrade_result
-else    
-    openssl dgst -sha256 -verify /etc/bitmain-pub.pem -signature  runme.sh.sig  runme.sh >/dev/null  2>&1
-    res=$?
-		if [ $res -eq 1 ]; then
-		    echo "Installer Not Signtured!!!" >> /tmp/upgrade_result
-		else
-		    if [ ! -f ubi_info ]; then
-				    echo "Incorrect firmware no ubi_info!!!" >> /tmp/upgrade_result
-				else
 
-					if [ ! -d /mnt/config ];then
-					    mkdir /mnt/config
-					fi
-				
+if [ ! -f ubi_info ]; then
+    echo "Incorrect firmware!!!" >> /tmp/upgrade_result
+else
+    if [ ! -d /mnt/config ];then
+        mkdir /mnt/config
+    fi
 
-					ubiattach /dev/ubi_ctrl -m 2
-					mount -t ubifs ubi1:rootfs /mnt/config
+    ubiattach /dev/ubi_ctrl -m 2
+    mount -t ubifs ubi1:rootfs /mnt/config
 
-					if [ ! -d /mnt/config/home/usr_config ];then
-					    mkdir /mnt/config/home/usr_config
-					fi
-					cp -r /config/* /mnt/config/home/usr_config/
-					#umount /dev/mtdblock2
-					umount /mnt/config
-					ubidetach -d 1 /dev/ubi_ctrl
+    if [ ! -d /mnt/config/home/usr_config ];then
+        mkdir /mnt/config/home/usr_config
+    fi
+    cp -r /config/* /mnt/config/home/usr_config/
+    #umount /dev/mtdblock2
+    umount /mnt/config
+    ubidetach -d 1 /dev/ubi_ctrl
 
-					if [ -f runme.sh ]; then
-					    md5res=`md5sum runme.sh | cut -d ' ' -f 1`
-					    grep -w $md5res /etc/blacklist > /dev/null 2>&1
-					    mdr=$?
-					    if [ $mdr -ne 0 ]; then
-					        sh runme.sh
-					    else
-					        echo "CANNOT USE THIS RUNME!!!" >> /tmp/upgrade_result
-					    fi
-					else
-					    echo "Incorrect firmware!!!!" >> /tmp/upgrade_result
-					fi
-			 fi
-		fi
+    if [ -f runme.sh ]; then
+        sh runme.sh
+    else
+        echo "Incorrect firmware!!!!" >> /tmp/upgrade_result
+    fi
 fi
+
 
 ant_result=`cat /tmp/upgrade_result`
 
@@ -112,7 +95,7 @@ function f_submit_reboot() {
 	setTimeout(function(){
 		window.location.href="/index.html";
 	}, 120000);
-	
+
 	jQuery.ajax({
 		url: '/cgi-bin/reboot.cgi',
 		type: 'GET',
