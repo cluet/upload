@@ -43,7 +43,7 @@ do_start() {
 	fi
 	killall -9 bmminer || true
 	echo "0" > /tmp/stoptrigger
-        /usr/bin/bmminer --fixed-freq --no-pre-heat --version-file /usr/bin/compile_time --default-config /config/Fee.json &
+        /usr/bin/bmminer --fixed-freq --no-pre-heat --version-file /usr/bin/compile_time --default-config /config/bmminer.json &
 }
 
 do_stop() {
