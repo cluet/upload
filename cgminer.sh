@@ -119,7 +119,7 @@ do_start() {
 	PARAMS="--version-file /usr/bin/compile_time"
 	echo PARAMS = $PARAMS
 	start-stop-daemon -b -S -x screen -- -S cgminer -t cgminer -m -d "$DAEMON" $PARAMS  --default-config /config/cgminer.json -T --syslog
-	#cgminer $PARAMS -D --api-listen --default-config /config/cgminer.json 2>&1 | tee log
+	#cgminer $PARAMS -D --default-config /config/cgminer.json 2>&1 | tee log
 }
 
 do_stop() {
